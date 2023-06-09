@@ -13,7 +13,7 @@ namespace TaskBoard.WebApp.Infrastructure
         public RequestDurationSummaryMiddleware(RequestDelegate next)
         {
             this.next = next;
-            this.summary = Metrics.CreateSummary("request_duration", "Request duration in milliseconds");
+            this.summary = Metrics.CreateSummary("request_duration", "Request duration in milliseconds.");
         }
 
         public async Task Invoke(HttpContext context)

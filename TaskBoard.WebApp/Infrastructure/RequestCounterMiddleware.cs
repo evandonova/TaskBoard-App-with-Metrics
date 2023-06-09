@@ -12,10 +12,11 @@ namespace TaskBoard.WebApp.Infrastructure
         public RequestCounterMiddleware(RequestDelegate next)
         {
             this.next = next;
-            this.counter = Metrics.CreateCounter("http_requests_count", "Counts requests to endpoints", new CounterConfiguration
-            {
-                LabelNames = new[] { "method", "endpoint" }
-            });
+            this.counter = Metrics.CreateCounter("http_requests_count", "Requests count.", 
+                    new CounterConfiguration
+                    {
+                        LabelNames = new[] { "method", "endpoint" }
+                    });
         }
 
         public async Task Invoke(HttpContext context)

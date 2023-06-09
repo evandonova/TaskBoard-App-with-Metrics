@@ -22,10 +22,10 @@ namespace TaskBoard.WebApp.Infrastructure
             return builder.UseMiddleware<ResponseSizeMiddleware>();
         }
 
-        public static IApplicationBuilder UseConcurrentOperationsGauge(
+        public static IApplicationBuilder UseLoggedInUsersGauge(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<ConcurrentOperationsMiddleware>();
+            return builder.UseMiddleware<LoggedInUsersGaugeMiddleware>();
         }
     }
 }

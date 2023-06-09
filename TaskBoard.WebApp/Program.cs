@@ -44,13 +44,6 @@ else
     app.UseHsts();
 }
 
-app.UseMetricServer();
-app.UseHttpMetrics();
-app.UseRequestCounter();
-app.UseRequestDurationSummary();
-app.UseResponseSizeHistogram();
-app.UseConcurrentOperationsGauge();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -62,7 +55,15 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
+
+app.UseMetricServer();
+app.UseHttpMetrics();
+app.UseRequestCounter();
+app.UseRequestDurationSummary();
+app.UseResponseSizeHistogram();
+app.UseLoggedInUsersGauge();
 
 app.Run();
 
