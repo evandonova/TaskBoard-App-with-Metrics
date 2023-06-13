@@ -21,11 +21,5 @@ namespace TaskBoard.WebApp.Infrastructure
         {
             return builder.UseMiddleware<ResponseSizeMiddleware>();
         }
-
-        public static IApplicationBuilder UseLoggedInUsersGauge(
-            this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<LoggedInUsersGaugeMiddleware>();
-        }
     }
 }

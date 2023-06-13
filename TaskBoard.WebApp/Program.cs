@@ -63,7 +63,6 @@ app.UseHttpMetrics();
 app.UseRequestCounter();
 app.UseRequestDurationSummary();
 app.UseResponseSizeHistogram();
-app.UseLoggedInUsersGauge();
 
 app.Run();
 
