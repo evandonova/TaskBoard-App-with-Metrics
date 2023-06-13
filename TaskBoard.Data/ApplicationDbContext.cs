@@ -9,10 +9,10 @@ namespace TaskBoard.Data
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         private bool seedDb = true;
-        private User guestUser { get; set; }
-        private Board openBoard { get; set; }
-        private Board inProgressBoard { get; set; }
-        private Board doneBoard { get; set; }
+        private User guestUser;
+        private Board openBoard;
+        private Board inProgressBoard;
+        private Board doneBoard;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, bool seedDb = true)
             : base(options)
