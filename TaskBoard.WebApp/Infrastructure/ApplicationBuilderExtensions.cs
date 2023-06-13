@@ -21,5 +21,11 @@ namespace TaskBoard.WebApp.Infrastructure
         {
             return builder.UseMiddleware<ResponseSizeMiddleware>();
         }
+
+        public static IApplicationBuilder UseTasksInBoardsGauge(
+            this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<TasksInBoardsGaugeMiddleware>();
+        }
     }
 }

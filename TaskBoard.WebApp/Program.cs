@@ -63,6 +63,7 @@ app.UseHttpMetrics();
 app.UseRequestCounter();
 app.UseRequestDurationSummary();
 app.UseResponseSizeHistogram();
+app.UseTasksInBoardsGauge();
 
 app.Run();
 
