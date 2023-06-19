@@ -17,14 +17,16 @@ namespace TaskBoard.WebApp.Infrastructure
         {
             this.next = next;
             this.tasksGauge = Metrics
-                 .CreateGauge("tasks_in_boards_gauge", "Number of \"Open\" / \"In Progress\" / \"Done\" tasks.",
+                 .CreateGauge("tasks_in_boards_gauge", 
+                 "Number of \"Open\" / \"In Progress\" / \"Done\" tasks.",
                     new GaugeConfiguration
                     {
                         LabelNames = new[] { "task_board_name" }
                     });
         }
 
-        public async Task Invoke(HttpContext context, ApplicationDbContext dbContext)
+        public async Task Invoke(HttpContext context, 
+            ApplicationDbContext dbContext)
         {
             UpdateGaugeMetric(dbContext);
             await next(context);

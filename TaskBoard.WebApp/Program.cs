@@ -1,11 +1,11 @@
-﻿using TaskBoard.Data;
-using TaskBoard.WebApp.Infrastructure;
-using Prometheus;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Prometheus;
+using TaskBoard.Data;
+using TaskBoard.WebApp.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -55,14 +55,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.MapRazorPages();
 
 app.UseMetricServer();
 app.UseHttpMetrics();
-app.UseRequestCounter();
-app.UseRequestDurationSummary();
-app.UseResponseSizeHistogram();
+app.UseRequestsCounter();
+app.UseRequestsDurationSummary();
+app.UseResponsesSizeHistogram();
 app.UseTasksInBoardsGauge();
 
 app.Run();

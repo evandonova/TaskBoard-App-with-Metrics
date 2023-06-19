@@ -4,22 +4,22 @@ namespace TaskBoard.WebApp.Infrastructure
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseRequestCounter(
+        public static IApplicationBuilder UseRequestsCounter(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<RequestCounterMiddleware>();
+            return builder.UseMiddleware<RequestsCounterMiddleware>();
         }
 
-        public static IApplicationBuilder UseRequestDurationSummary(
+        public static IApplicationBuilder UseRequestsDurationSummary(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<RequestDurationSummaryMiddleware>();
+            return builder.UseMiddleware<RequestsDurationSummaryMiddleware>();
         }
 
-        public static IApplicationBuilder UseResponseSizeHistogram(
+        public static IApplicationBuilder UseResponsesSizeHistogram(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<ResponseSizeMiddleware>();
+            return builder.UseMiddleware<ResponsesSizeMiddleware>();
         }
 
         public static IApplicationBuilder UseTasksInBoardsGauge(
@@ -29,3 +29,4 @@ namespace TaskBoard.WebApp.Infrastructure
         }
     }
 }
+

@@ -5,15 +5,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace TaskBoard.WebApp.Infrastructure
 {
-    public class RequestDurationSummaryMiddleware
+    public class RequestsDurationSummaryMiddleware
     {
         private readonly RequestDelegate next;
         private readonly Summary summary;
 
-        public RequestDurationSummaryMiddleware(RequestDelegate next)
+        public RequestsDurationSummaryMiddleware(RequestDelegate next)
         {
             this.next = next;
-            this.summary = Metrics.CreateSummary("request_duration", "Request duration in milliseconds.");
+            this.summary = Metrics.CreateSummary("requests_duration", 
+                "Requests duration in milliseconds.");
         }
 
         public async Task Invoke(HttpContext context)
@@ -23,7 +24,7 @@ namespace TaskBoard.WebApp.Infrastructure
             await next(context);
 
             stopwatch.Stop();
-            summary.Observe(stopwatch.Elapsed.TotalSeconds);
+            this.summary.Observe(stopwatch.Elapsed.TotalSeconds);
         }
     }
 }
